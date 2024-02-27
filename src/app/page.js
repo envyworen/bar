@@ -24,8 +24,8 @@ export default async  function Home() {
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       {data.map((data) => (
         
-        <Link href={`/show/${data.id}`}>
-        <div  key={data.id} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <Link key={data.id} href={`/show/${data.id}`}>
+        <div   className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="bg-white rounded-t-lg">
                 <img className="rounded-t-lg  m-auto h-[340px]" src={`${data.image}`} alt="" />
             </div>
