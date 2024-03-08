@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from 'next/link';
 
 async function getData() {
-  const res = await fetch('http://api.hsrk2216.odns.fr/api/drinks')
+  const res = await fetch('http://api.200degres.fr/api/drinks')
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
   if (!res.ok) {
