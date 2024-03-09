@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 async function getData() {
   const res = await fetch('http://api.200degres.fr/api/drinks')
@@ -14,7 +15,22 @@ async function getData() {
 }
 
 export default async  function Home() {
-  const data = await getData()
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedData = await getData();
+        setData(fetchedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+
+    // Vous pouvez ajouter des dépendances au tableau de dépendances useEffect si nécessaire
+  }, []);
 
   
 
