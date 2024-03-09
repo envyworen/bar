@@ -1,6 +1,8 @@
 "use client";
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import fetch from 'isomorphic-unfetch'; // Pour effectuer des requêtes à partir du côté serveur dans Next.js
+
 
 async function getData() {
   const res = await fetch('http://api.200degres.fr/api/drinks')
@@ -12,6 +14,16 @@ async function getData() {
   }
  
   return res.json()
+}
+
+export async function getServerSideProps() {
+  try {
+    const initialData = await getData();
+    return { props: { initialData } };
+  } catch (error) {
+    console.error('Error fetching initial data:', error);
+    return { props: { initialData: null } };
+  }
 }
 
 export default async  function Home() {
@@ -32,6 +44,7 @@ export default async  function Home() {
     // Vous pouvez ajouter des dépendances au tableau de dépendances useEffect si nécessaire
   }, []);
 
+  
   
 
   return (
