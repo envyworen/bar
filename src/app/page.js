@@ -16,15 +16,7 @@ async function getData() {
   return res.json()
 }
 
-export async function getServerSideProps() {
-  try {
-    const initialData = await getData();
-    return { props: { initialData } };
-  } catch (error) {
-    console.error('Error fetching initial data:', error);
-    return { props: { initialData: null } };
-  }
-}
+
 
 export default async  function Home() {
   const [data, setData] = useState(null);
